@@ -96,8 +96,6 @@ c.CustomerID = sub.customerID
 
 --7 List all Customers who have ordered products, but have the ‘ship city’ on the order different from their own customer cities.
 
-
-
 /*
 SELECT Distinct c.City
 From customers c JOin (
@@ -107,8 +105,10 @@ on o.orderId = od.OrderID) sub ON
 c.customerID = sub.customerID AND c.city <> sub.ShipCity
 */
 
+
+/*
 --8   List 5 most popular products, their average price, and the customer city that ordered most quantity of it.
-/* --DROP TABLE #TFIVE
+DROP TABLE #TFIVE
  SELECT * INTO #TFive FROM ( 
 Select TOP 5 productID AS prodID, AVG(UnitPrice) AS Average_UnitPrice , COUNT(productID) AS [Products Sold],  ROW_NUMBER () OVER (Order by COUNT(productID) DESC ) AS RANK_SOLD
 FRom [Order Details Extended]
@@ -130,18 +130,56 @@ fsub.CustomerID = c.CustomerID
 */
 
 
-
-
+/*
 
 --9     List all cities that have never ordered something but we have employees there.
 
 --a.      Use sub-query
+select *
+from
+(SElect distinct o.ShipCity AS [Cities Never Ordered From Orders]
+From orders o left join customers c
+on c.city = o.ShipCity
+where c.city is null ) b full outer join 
+(SElect distinct e.city AS [Cities never ordered From employee table]
+from employees e left join customers c ON
+e.city = c.city
+where c.city is null) e on 
+b.[Cities Never Ordered From Orders] = e.[Cities never ordered From employee table]
 
 --b.      Do not use sub-query
 
---10
+SElect distinct o.ShipCity AS [Cities Never Ordered ]
+From orders o left join customers c
+on c.city = o.ShipCity
+where c.city is null
+Union
 
---11 You can use a common table expression such as this example to delete duplicate rows in a table
+SElect distinct e.city
+from employees e left join customers c ON
+e.city = c.city
+where c.city is null
+*/
+
+
+--10  List one city, if exists, that is the city from where the employee sold most orders (not the product quantity) is, and also the city of most total quantity of products ordered from. (tip: join  sub-query)
+/*
+with CTE_MAX_ORDER_CITY AS(
+SELECT sub.shipcity, sub.NUM_OF_ORDERS, ROW_NUMBER () OVER (order BY sub.NUM_OF_ORDERS DESC ) AS  ORDERED_NUM
+FROM
+( select COUNT(orderID) AS NUM_OF_ORDERS, shipcity
+from orders
+group by ShipCity) sub
+)
+
+
+Select * from CTE_MAX_ORDER_CITY
+where ordered_num = 1
+*/
+
+--11.How do you remove the duplicates record of a table?
+ 
+ --You can use a common table expression such as this example to delete duplicate rows in a table
 
 /*WITH cte AS (
     SELECT 
