@@ -1,0 +1,31 @@
+02  Arrays and Strings
+
+
+
+1.When to use String vs. StringBuilder in C# ?
+
+A stringbuilder should be used when the value within is being concatenated upon or deconcatenated. A string should be used when the value within the string is set and not expected to change.
+
+2.What is the base class for all arrays in C#?
+The base class for all arrays is The Array class. It is defined in the System namespace. The Array class provides various properties and methods to work with arrays.
+
+3.How do you sort an array in C#?
+
+To sort an array in C# you can use the sort function of the array class and to reverse sort you can use the reverse function in the array class.
+Ex 1. Array.sort(exampleArray);    Ex.2 Array.reverse(exampleArray);
+
+4.What property of an array object can be used to get the total number of elements in an array?
+the .count property can be used to count the total number of elements.
+ Ex 1. string[] animals = { "Cat", "Alligator", "fox", "donkey", "Cat", "alligator" };
+totalElements = animals.Count(); // answer is 6
+
+5.Can you store multiple data types in System.Array?
+No. System.Array is homogenous.
+
+
+6.What’s the difference between the System.Array.CopyTo() and System.Array.Clone()?
+
+System.Array.CopyTo() takes a shallow copy of the array's elements and puts it in an already existing array that also needs to have the space to hold the size of the copied elements.
+
+System.Array.Clone() takes a shallow copy of the array's elments and creates a brand new array from this copy. the new array does not have to pre-exist in this case.
+

@@ -1,0 +1,90 @@
+Understanding Data TypesTest your Knowledge 
+1.What type would you choose for the following “numbers”?
+ A person’s telephone number  - integer
+ A person’s height - float
+ A person’s age - integer
+ A person’s gender (Male, Female, Prefer Not To Answer) - Char
+ A person’s salary - decimal
+ A book’s ISBN - long
+ A book’s price - decimal
+ A book’s shipping weight float
+ A country’s population - long
+ The number of stars in the universe  - ulong
+ The number of employees in each of the small or medium businesses in the United Kingdom (up to about 50,000 employees per business) ushort
+
+
+ 2. What are the difference between value type and reference type variables? What is boxing and unboxing?
+ Value types hold the actual value in memory in its own memory allocation. Reference types holds a pointer to another memory location of an object in memory. Value types are stored in the stack while reference types are stored in the heap. Boxing is when one wraps a variable value type in a reference type. Unboxing is when a reference is unwrapped and the value type data is directly associated with a memory location.
+
+ 3. What is meant by the terms managed resource and unmanaged resource in .NET
+
+
+ 4. Whats the purpose of Garbage Collector in .NET?
+
+  The garbage collector is an automatic memory manager. With the garbage collector the user does not need to manuallly release memory. It is very efficient in how it allocates objects in the managed heap.
+
+  5.
+
+
+
+
+
+  Controlling Flow and Converting Types Test your Knowledge
+
+  1.What happens when you divide an int variable by 0? 
+  
+  An exception is brought up. System.DivideByZeroException has been thrown is shown.
+
+
+  2.What happens when you divide a double variable by 0? 
+
+  An  ∞ sign is shown.
+
+
+  3.What happens when you overflow an int variable, that is, set it to a value beyond its range? 
+
+  An overflow error is brought up in the console terminal. "The operation overflows at compile time." If the value is extrememly beyond the range the console will suggest that the variable should be a long type.
+
+
+  4.What is the difference between x = y++; and x = ++y;? 
+  in y++ The value of y is incremented after the value of y is casted onto x so x will be y-1. In x = ++y the value of y is incremented before x attains the value of y so after the statement is completed  x= y.
+
+
+  5.What is the difference between break, continue, and return when used inside a loop statement?
+
+  When break is used it will end the loop  and will not continue further with the execution.
+  when continue is used in the loop, it begins the next iteration of the loop without regard of completing the previous iteration.
+  With return it stops execution and exits the function.
+
+
+   6.What are the three parts of a for statement and which of them are required? 
+
+   A for loop in C# has  three parts being initialization, condition and iterator.
+
+7.What is the difference between the = and == operators? 
+
+The = operator assigns a value to variable. The == operator is a comparison operatpor that can compare object referencees to see whether they point at the same object.
+
+8.Does the following statement compile? for ( ; true; ) ; 
+
+Yes the statement does compile.
+
+
+
+9.What does the underscore _ represent in a switch expression? 
+
+The underscore ( _ ) character replaces the default keyword to signify that it should match anything if reached.
+
+
+10.What interface must an object implement to be enumerated over by using the foreach statement?
+
+The IEnumerable interface permits enumeration by using a foreach loop for objects.
+
+
+
+
+Practice loops and operators 
+
+1. If the code executes the loop would run forever because bytes can only increment up to 255 then they will incur an overflow and reset to 0. 
+
+Something we can add to warn users is that bytes overlow after a value off 255.
